@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {View, Button, TextInput} from 'react-native'
 // Import actio to add new Timer
 import { addTimer } from '../actions';
 // import './timers.css';
@@ -11,24 +12,22 @@ class NewTimer extends Component {
 	}
 	render() {
 		return (
-			<div className="new-timer__container">
-				<input
-					className="new-timer__input"
-					type="text"
+			<View>
+        {/* Does Native have "input" ?? */}
+				<TextInput
 					placeholder="Add Timer Name"
-					name="name"
+					// name="name"
 					value={this.state.name}
-					onChange={(e) => this.setState({ name: e.target.value })}
+					onChangeText={text => this.setState({ name:text })}
 				/>
-				<button
-					className="new-timer__button"
-					onClick={(e) => {
+				<Button
+          title = 'Save Timer'
+					onPress={() => {
 						this.props.addTimer(this.state.name);
 					}}
-				>
-					Save Timer
-				</button>
-			</div>
+				/>
+			
+			</View>
 		);
 	}
 }

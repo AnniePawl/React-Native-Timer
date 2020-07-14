@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { StyleSheet, ScrollView, Text, View, SafeAreaView } from 'react-native';
-// Provider component makes Redux store available to any nested components wrapped in connect() function
 import { createStore } from 'redux';
+// Provider component makes Redux store available to any nested components wrapped in connect() function
+import {update} from './actions'
 import { Provider } from 'react-redux';
 import reducers from './reducers';
 
@@ -28,27 +29,38 @@ import ListTimers from './components/list-timers';
 // Create Store
 const store = createStore(reducers);
 
+// Update Timer every 50ms 
+let lastUpdateTime = Date.now()
+setInterval(() => {
+  const now = Date.now()
+  const deltaTime = now - lastUpdateTime
+  lastUpdateTime = now
+  store.dispatch(update(deltaTime))
+}, 50)
+
 export default function All() {
 	return (
-		<View style={styles.container}>
-			<SafeAreaView style={styles.safearea}>
-      <View style={styles.headingContainer}>
-				<Text style={styles.heading}>Timers</Text>
+    <Provider store={store}>
+      <View style={styles.container}>
+        <SafeAreaView style={styles.safearea}>
+        <View style={styles.headingContainer}>
+          <Text style={styles.heading}>Timers</Text>
+          </View>
+
+          {/* define prodiver component to make Redux store available to any nested components that are wrapped in connect() function */}
+          <View>
+          
+              {/* Timer Components */}
+              <NewTimer />
+              <ListTimers />
+        
+    
         </View>
 
 
-        {/* define prodiver component to make Redux store available to any nested components that are wrapped in connect() function */}
-        <Provider store={store}>
-        <div className="App">
-          {/* Timer Components */}
-					<NewTimer />
-					<ListTimers />
-        </div>
-      </Provider>
-
-
-			</SafeAreaView>
-		</View>
+        </SafeAreaView>
+      </View>
+    </Provider>
 	);
 }
 
@@ -61,7 +73,7 @@ const styles = StyleSheet.create({
 		justifyContent: 'center'
   },
   headingContainer: {
-    height:60,
+    height:65,
     backgroundColor:'#8ae3ba',
   },
 	safearea: {
@@ -75,7 +87,6 @@ const styles = StyleSheet.create({
     textAlign:'center',
     fontSize:35,
     color:'#ffe6ea',
-   
   }
 
 });
