@@ -6,6 +6,8 @@ import { Provider } from 'react-redux';
 import reducers from './reducers';
 
 // Import Timer Components 
+import NewTimer from './components/new-timer';
+import ListTimers from './components/list-timers';
 
 // import { 
 //   Oswald_300Light,
@@ -38,16 +40,11 @@ export default function All() {
         {/* define prodiver component to make Redux store available to any nested components that are wrapped in connect() function */}
         <Provider store={store}>
         <div className="App">
-          <header className="App-header">
-            <h1 className="App-title">Welcome to React</h1>
-          </header>
-          <p className="App-intro">
-            Tmrz
-          </p>
+          {/* Timer Components */}
+					<NewTimer />
+					<ListTimers />
         </div>
       </Provider>
-
-
 
 
 			</SafeAreaView>
