@@ -1,5 +1,12 @@
 import * as React from 'react';
 import { StyleSheet, ScrollView, Text, View, SafeAreaView } from 'react-native';
+// Provider component makes Redux store available to any nested components wrapped in connect() function
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import reducers from './reducers';
+
+// Import Timer Components 
+
 // import { 
 //   Oswald_300Light,
 //   Oswald_400Regular,
@@ -16,6 +23,9 @@ import { StyleSheet, ScrollView, Text, View, SafeAreaView } from 'react-native';
 //     Oswald,
 //   });
 
+// Create Store
+const store = createStore(reducers);
+
 export default function All() {
 	return (
 		<View style={styles.container}>
@@ -23,6 +33,23 @@ export default function All() {
       <View style={styles.headingContainer}>
 				<Text style={styles.heading}>Timers</Text>
         </View>
+
+
+        {/* define prodiver component to make Redux store available to any nested components that are wrapped in connect() function */}
+        <Provider store={store}>
+        <div className="App">
+          <header className="App-header">
+            <h1 className="App-title">Welcome to React</h1>
+          </header>
+          <p className="App-intro">
+            Tmrz
+          </p>
+        </div>
+      </Provider>
+
+
+
+
 			</SafeAreaView>
 		</View>
 	);
