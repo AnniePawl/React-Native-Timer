@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { View, Button, TextInput, StyleSheet, Text } from 'react-native';
+import { View, TextInput, StyleSheet, Text } from 'react-native';
 // Import actio to add new Timer
 import { addTimer } from '../actions';
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -65,6 +65,7 @@ const styles = StyleSheet.create({
 		borderBottomColor: '#8ae3ba'
 	},
 	inputText: {
+		fontSize: 16,
 		backgroundColor: '#e7ff96',
 		textAlign: 'center',
 		borderWidth: 2,
