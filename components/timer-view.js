@@ -30,7 +30,7 @@ class TimerView extends Component {
 							toggleTimer(index);
 						}}
 					>
-						<Text>{timer.isRunning ? 'STOP' : 'START'}</Text>
+						<Text style={styles.text}>{timer.isRunning ? 'STOP' : 'START'}</Text>
 					</TouchableOpacity>
 					{/* Delete Button */}
 					<TouchableOpacity
@@ -39,7 +39,7 @@ class TimerView extends Component {
 							this.props.deleteTimer(index);
 						}}
 					>
-						<Text>DELETE</Text>
+						<Text style={styles.text}>DELETE</Text>
 					</TouchableOpacity>
 				</View>
 
@@ -72,15 +72,17 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		alignItems: 'center',
 		justifyContent: 'space-between',
-		margin: 8
+		margin: 5,
+		borderBottomWidth: 2,
+		borderBottomColor: '#8ae3ba'
 	},
 	startButton: {
 		// borderWidth: 2,
 		backgroundColor: '#ebff7d',
 		// backgroundColor: '#8ae3ba',
 		height: 30,
-		width: 65,
-		margin: 10,
+		width: 55,
+		margin: 5,
 		borderBottomEndRadius: 3,
 		borderTopEndRadius: 3,
 		borderBottomStartRadius: 3,
@@ -90,11 +92,10 @@ const styles = StyleSheet.create({
 	},
 	deleteButton: {
 		// borderWidth: 2,
-		backgroundColor: '#ff9a96',
-		// backgroundColor: '#8ae3ba',
+		backgroundColor: '#ff9f9c',
 		height: 30,
-		width: 60,
-		margin: 10,
+		width: 55,
+		margin: 5,
 		borderBottomEndRadius: 3,
 		borderTopEndRadius: 3,
 		borderBottomStartRadius: 3,
@@ -107,17 +108,21 @@ const styles = StyleSheet.create({
 		flexDirection: 'row'
 	},
 	timerName: {
-		fontSize: 28,
+		fontSize: 20,
 		marginLeft: 15,
 		textTransform: 'uppercase',
-		color: '#7acfa7',
+		color: '#707070',
 		fontWeight: 'bold'
 		// justifyContent: 'flex-start'
 		// marginRight: 20
 	},
 	time: {
 		fontSize: 28,
+		fontWeight: 'bold',
 		justifyContent: 'center',
-		color: '#5dcfe3'
+		color: '#2fb5cc'
+	},
+	text: {
+		fontSize: 12
 	}
 });

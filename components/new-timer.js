@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { View, TextInput, StyleSheet, Text } from 'react-native';
+import { View, TextInput, StyleSheet, Text, Keyboard } from 'react-native';
 // Import actio to add new Timer
 import { addTimer } from '../actions';
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -13,9 +13,10 @@ class NewTimer extends Component {
 	}
 	render() {
 		return (
-			<View style={styles.newTimerContainer}>
+			<View style={styles.newTimerContainer} keyboardShouldPersistTaps="handled">
 				{/* Does Native have "input" ?? */}
 				<TextInput
+					keyboardType="default"
 					style={styles.inputText}
 					placeholder="Name a New Timer"
 					value={this.state.name}

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, ScrollView, Text, View, SafeAreaView } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import { createStore } from 'redux';
 // Provider component makes Redux store available to any nested components wrapped in connect() function
 import { update } from './actions';
@@ -9,6 +9,15 @@ import reducers from './reducers';
 // Import Timer Components
 import NewTimer from './components/new-timer';
 import ListTimers from './components/list-timers';
+// Persist Timer
+import { loadState, saveState } from './utils';
+
+// Deal w/ Timer State
+const persistedState = loadState();
+const store = createStore(reducers, persistedState);
+store.subscribe(() => {
+	saveState(store.getState());
+});
 
 // import {
 //   Oswald_300Light,
